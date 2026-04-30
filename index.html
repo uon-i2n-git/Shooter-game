@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Slop Burgers - Build It, Earn It</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo-mark">🍔</span>
+      <span class="logo-text">Slop Burgers</span>
+    </div>
+    <nav>
+      <button id="nav-menu" class="nav-btn active">Menu</button>
+      <button id="nav-cart" class="nav-btn">Cart <span id="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <template id="tpl-menu">
+    <section class="screen menu-screen">
+      <h1>Build it. Earn it. Eat it.</h1>
+      <p class="subtitle">Stack the burger yourself in the kitchen mini-game. Nail the order, unlock a discount on that exact burger.</p>
+      <div class="menu-grid" id="menu-grid"></div>
+    </section>
+  </template>
+
+  <template id="tpl-game">
+    <section class="screen game-screen">
+      <div class="game-header">
+        <button class="back-btn" id="back-btn">← Back to menu</button>
+        <h2 id="game-title"></h2>
+        <div class="game-stats">
+          <div class="stat">⏱ <span id="timer">30</span>s</div>
+          <div class="stat">❤ <span id="lives">3</span></div>
+        </div>
+      </div>
+
+      <div class="game-body">
+        <aside class="recipe-panel">
+          <h3>Order ticket</h3>
+          <ol id="recipe-list"></ol>
+          <div class="next-up">
+            Next: <strong id="next-ingredient">—</strong>
+          </div>
+        </aside>
+
+        <div class="kitchen">
+          <div class="stack" id="stack"></div>
+          <div class="conveyor" id="conveyor"></div>
+        </div>
+      </div>
+
+      <div class="game-overlay hidden" id="overlay"></div>
+    </section>
+  </template>
+
+  <template id="tpl-cart">
+    <section class="screen cart-screen">
+      <h1>Your order</h1>
+      <div id="cart-items"></div>
+      <div class="cart-summary" id="cart-summary"></div>
+      <button class="primary-btn" id="checkout-btn">Checkout</button>
+    </section>
+  </template>
+
+  <script src="menu.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
