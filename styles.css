@@ -59,18 +59,8 @@ body {
   z-index: 10;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.logo-mark {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  display: block;
-}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark { width: 48px; height: 48px; object-fit: contain; display: block; }
 .logo-text {
   font-family: var(--font-display);
   font-size: 24px;
@@ -96,20 +86,13 @@ nav { display: flex; gap: 8px; }
   cursor: pointer;
   transition: transform var(--dur-fast) var(--ease-bite), box-shadow var(--dur-fast);
 }
-.nav-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--shadow-sticker);
-}
+.nav-btn:hover { transform: translate(-1px, -1px); box-shadow: var(--shadow-sticker); }
 .nav-btn.active {
   background: var(--slop-ketchup);
   color: var(--slop-cream);
-  border-color: var(--slop-charcoal);
   box-shadow: var(--shadow-sticker);
 }
-.nav-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-press);
-}
+.nav-btn:active { transform: translate(2px, 2px); box-shadow: var(--shadow-press); }
 
 #cart-count {
   display: inline-block;
@@ -125,17 +108,10 @@ nav { display: flex; gap: 8px; }
 /* ============================================================
    LAYOUT
    ============================================================ */
-main {
-  padding: 32px 28px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+main { padding: 32px 28px; max-width: 1100px; margin: 0 auto; }
 
 .screen { animation: fadeIn 200ms ease; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: none; }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* ============================================================
    MENU SCREEN
@@ -160,7 +136,7 @@ main {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -175,12 +151,9 @@ main {
   box-shadow: var(--shadow-sticker);
   transition: transform var(--dur-fast) var(--ease-bite), box-shadow var(--dur-fast);
 }
-.menu-card:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--shadow-sticker-lg);
-}
 .menu-card:nth-child(odd)  { transform: rotate(-0.5deg); }
 .menu-card:nth-child(even) { transform: rotate(0.4deg); }
+.menu-card:hover { box-shadow: var(--shadow-sticker-lg); }
 .menu-card:nth-child(odd):hover  { transform: rotate(-0.5deg) translate(-1px, -1px); }
 .menu-card:nth-child(even):hover { transform: rotate(0.4deg) translate(-1px, -1px); }
 
@@ -192,14 +165,12 @@ main {
   color: var(--slop-charcoal);
   line-height: 1;
 }
-
 .menu-card .ingredients {
   font-size: 13px;
   line-height: 1.5;
   color: var(--slop-charcoal-soft);
   min-height: 36px;
 }
-
 .menu-card .price {
   font-family: var(--font-body);
   font-weight: 800;
@@ -207,20 +178,34 @@ main {
   color: var(--slop-ketchup);
   font-variant-numeric: tabular-nums;
 }
+.menu-card .actions { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap; }
 
-.menu-card .actions {
-  display: flex;
-  gap: 8px;
-  margin-top: auto;
-  flex-wrap: wrap;
+/* ---- Add-on chips ---- */
+.addon-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.addon-chip {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 2px solid var(--slop-charcoal);
+  border-radius: var(--radius-pill);
+  background: var(--slop-cream);
+  color: var(--slop-charcoal);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-bite), background var(--dur-fast);
 }
+.addon-chip:hover { transform: translateY(-1px); }
+.addon-chip.on { background: var(--slop-pickle); color: var(--slop-cream); }
 
+/* ---- Discount / tier badges ---- */
 .discount-badge {
   display: inline-block;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 4px 10px;
   border: 2px solid var(--slop-charcoal);
@@ -228,6 +213,9 @@ main {
   background: transparent;
   color: var(--slop-pickle);
 }
+.discount-badge.tier-gold   { background: var(--slop-mustard); color: var(--slop-charcoal); }
+.discount-badge.tier-silver { background: #cdd2d6;             color: var(--slop-charcoal); }
+.discount-badge.tier-bronze { background: #b07a3c;             color: var(--slop-cream); }
 
 /* ============================================================
    BUTTONS
@@ -244,34 +232,12 @@ main {
   transition: transform var(--dur-fast) var(--ease-bite), box-shadow var(--dur-fast);
   border: 3px solid var(--slop-charcoal);
 }
-
-.primary-btn {
-  background: var(--slop-ketchup);
-  color: var(--slop-cream);
-  box-shadow: var(--shadow-sticker);
-}
-.primary-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--shadow-sticker-lg);
-}
-.primary-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-press);
-}
-
-.ghost-btn {
-  background: var(--slop-mustard);
-  color: var(--slop-charcoal);
-  box-shadow: var(--shadow-sticker);
-}
-.ghost-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: var(--shadow-sticker-lg);
-}
-.ghost-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-press);
-}
+.primary-btn { background: var(--slop-ketchup); color: var(--slop-cream); box-shadow: var(--shadow-sticker); }
+.primary-btn:hover { transform: translate(-1px, -1px); box-shadow: var(--shadow-sticker-lg); }
+.primary-btn:active { transform: translate(2px, 2px); box-shadow: var(--shadow-press); }
+.ghost-btn { background: var(--slop-mustard); color: var(--slop-charcoal); box-shadow: var(--shadow-sticker); }
+.ghost-btn:hover { transform: translate(-1px, -1px); box-shadow: var(--shadow-sticker-lg); }
+.ghost-btn:active { transform: translate(2px, 2px); box-shadow: var(--shadow-press); }
 
 /* ============================================================
    GAME SCREEN
@@ -280,11 +246,10 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   gap: 12px;
   flex-wrap: wrap;
 }
-
 .back-btn {
   font-family: var(--font-body);
   font-weight: 700;
@@ -299,7 +264,6 @@ main {
   transition: color var(--dur-fast);
 }
 .back-btn:hover { color: var(--slop-ketchup); }
-
 .game-header h2 {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 44px);
@@ -308,9 +272,7 @@ main {
   line-height: 1;
   color: var(--slop-charcoal);
 }
-
 .game-stats { display: flex; gap: 10px; }
-
 .stat {
   font-family: var(--font-display);
   font-size: 20px;
@@ -324,6 +286,34 @@ main {
   box-shadow: 3px 3px 0 0 var(--slop-charcoal);
   line-height: 1;
 }
+.stat-combo { background: var(--slop-cream); }
+
+/* ---- Stability bar ---- */
+.stability-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.stability-label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slop-charcoal-soft);
+}
+.stability-bar {
+  flex: 1;
+  height: 14px;
+  background: var(--slop-cream-deep);
+  border: 2px solid var(--slop-charcoal);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.stability-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--slop-pickle);
+  transition: width 220ms var(--ease-bite), background 220ms;
+}
+.stability-fill.warn   { background: var(--slop-mustard); }
+.stability-fill.danger { background: var(--slop-ketchup); }
 
 .game-body {
   display: grid;
@@ -331,11 +321,9 @@ main {
   gap: 18px;
   min-height: 480px;
 }
-@media (max-width: 720px) {
-  .game-body { grid-template-columns: 1fr; }
-}
+@media (max-width: 720px) { .game-body { grid-template-columns: 1fr; } }
 
-/* ---- Recipe panel ---- */
+/* ---- Order ticket / tips ---- */
 .recipe-panel {
   background: var(--bg-elevated);
   border: 3px solid var(--slop-charcoal);
@@ -345,7 +333,6 @@ main {
   display: flex;
   flex-direction: column;
 }
-
 .recipe-panel h3 {
   font-family: var(--font-display);
   font-size: 22px;
@@ -354,55 +341,38 @@ main {
   color: var(--slop-charcoal);
   margin-bottom: 12px;
 }
-
-#recipe-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 16px;
-  flex: 1;
-}
-
-#recipe-list li {
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: var(--slop-cream);
-  border: 1.5px solid var(--slop-cream-deep);
-  font-size: 14px;
-  font-weight: 500;
+#checklist { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+#checklist li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: var(--slop-charcoal);
+  font-size: 13px;
+  padding: 6px 10px;
+  background: var(--slop-cream);
+  border: 1.5px solid var(--slop-cream-deep);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
 }
+#checklist li.done { color: var(--fg-3); text-decoration: line-through; opacity: 0.6; }
 
-#recipe-list li.done {
-  color: var(--fg-3);
-  text-decoration: line-through;
-  opacity: 0.55;
-}
-
-#recipe-list li.current {
-  background: var(--slop-mustard);
-  border-color: var(--slop-charcoal);
-  border-width: 2px;
-  font-weight: 700;
-  color: var(--slop-charcoal);
-}
-
-.next-up {
+.tips {
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-3);
-  padding-top: 12px;
+  color: var(--slop-charcoal-soft);
   border-top: 1.5px solid var(--slop-cream-deep);
+  padding-top: 12px;
+  margin-top: auto;
 }
-.next-up strong {
+.tips > strong {
+  display: block;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
   color: var(--slop-ketchup);
+  margin-bottom: 6px;
 }
+.tips ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.tips li { line-height: 1.4; }
+.tips li::before { content: "\2022 "; color: var(--slop-mustard); font-weight: 800; }
 
 /* ---- Kitchen ---- */
 .kitchen {
@@ -414,30 +384,34 @@ main {
   overflow: hidden;
   position: relative;
 }
-
-.stack {
+.stack-wrap {
   flex: 1;
   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 16px;
+  align-items: flex-end;
+  justify-content: center;
   min-height: 280px;
+  padding: 16px;
   position: relative;
 }
-.stack::after {
+.stack-wrap::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 8%;
-  right: 8%;
+  bottom: 12px;
+  left: 12%;
+  right: 12%;
   height: 3px;
   background: linear-gradient(90deg, transparent, var(--slop-charcoal-soft), transparent);
 }
-
+.stack {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  transform-origin: bottom center;
+  transition: transform 240ms var(--ease-bite);
+}
 .layer {
-  width: 70%;
-  max-width: 320px;
+  width: 240px;
+  max-width: 70vw;
   padding: 10px 16px;
   margin-bottom: -6px;
   border-radius: var(--radius-pill);
@@ -449,12 +423,27 @@ main {
   box-shadow: 0 4px 0 rgba(0,0,0,0.25);
   animation: drop 220ms var(--ease-bite);
 }
-@keyframes drop {
-  from { transform: translateY(-32px); opacity: 0; }
-  to   { transform: none; opacity: 1; }
-}
+.layer.bad { outline: 2px dashed var(--slop-ketchup); outline-offset: 1px; }
+@keyframes drop { from { transform: translateY(-32px); opacity: 0; } to { transform: none; opacity: 1; } }
 
-/* ---- Conveyor ---- */
+/* ---- Feedback toast ---- */
+.feedback {
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  background: #1a1410;
+  color: transparent;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 160ms, transform 160ms var(--ease-bite);
+}
+.feedback.show { opacity: 1; transform: none; padding: 8px 14px; }
+.feedback.good { color: var(--slop-pickle); }
+.feedback.bad  { color: #ff7a6e; }
+
+/* ---- Conveyor / ingredient palette ---- */
 .conveyor {
   display: flex;
   gap: 10px;
@@ -465,7 +454,6 @@ main {
   justify-content: center;
   min-height: 72px;
 }
-
 .ingredient-btn {
   font-family: var(--font-body);
   font-weight: 600;
@@ -478,33 +466,28 @@ main {
   cursor: pointer;
   transition: transform var(--dur-fast) var(--ease-bite), border-color var(--dur-fast), background var(--dur-fast);
 }
-.ingredient-btn:hover {
-  border-color: var(--slop-mustard);
-  background: var(--slop-mustard);
-  transform: translateY(-2px);
-}
-.ingredient-btn.flash-good {
-  background: var(--slop-pickle);
+.ingredient-btn:hover { border-color: var(--slop-mustard); background: var(--slop-mustard); transform: translateY(-2px); }
+.ingredient-btn .count {
+  display: inline-block;
+  background: var(--slop-charcoal);
   color: var(--slop-cream);
-  border-color: var(--slop-pickle);
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  padding: 0 6px;
+  margin-left: 4px;
 }
-.ingredient-btn.flash-bad {
-  background: var(--slop-ketchup);
-  color: var(--slop-cream);
-  border-color: var(--slop-ketchup);
-  animation: shake 200ms;
-}
-@keyframes shake {
-  0%,100% { transform: translateX(0); }
-  25%      { transform: translateX(-5px); }
-  75%      { transform: translateX(5px); }
+.ingredient-btn.disabled, .ingredient-btn:disabled { opacity: 0.32; cursor: not-allowed; }
+.ingredient-btn.disabled:hover {
+  transform: none;
+  background: var(--slop-cream);
+  border-color: var(--slop-cream-deep);
 }
 
 /* ---- Game overlay ---- */
 .game-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(43, 33, 24, 0.93);
+  background: rgba(43, 33, 24, 0.94);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -514,7 +497,6 @@ main {
   z-index: 5;
 }
 .game-overlay.hidden { display: none; }
-
 .game-overlay h2 {
   font-family: var(--font-display);
   font-size: 52px;
@@ -524,14 +506,7 @@ main {
   color: var(--slop-cream);
   margin-bottom: 12px;
 }
-
-.game-overlay p {
-  font-size: 16px;
-  color: var(--slop-cream);
-  opacity: 0.85;
-  max-width: 400px;
-}
-
+.game-overlay p { font-size: 16px; color: var(--slop-cream); opacity: 0.85; max-width: 420px; }
 .game-overlay .code-box {
   background: transparent;
   border: 3px solid var(--slop-mustard);
@@ -545,21 +520,28 @@ main {
   margin: 18px 0;
   text-transform: uppercase;
 }
+.overlay-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; justify-content: center; }
 
-.game-overlay .overlay-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 18px;
+.tier-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: 24px;
+  padding: 6px 18px 4px;
+  border: 3px solid var(--slop-cream);
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
 }
+.tier-badge.tier-gold   { background: var(--slop-mustard); color: var(--slop-charcoal); border-color: var(--slop-charcoal); }
+.tier-badge.tier-silver { background: #cdd2d6;             color: var(--slop-charcoal); border-color: var(--slop-charcoal); }
+.tier-badge.tier-bronze { background: #b07a3c;             color: var(--slop-cream); }
+.tier-badge.tier-none   { background: transparent;         color: var(--slop-cream); border-color: var(--slop-cream); }
 
 /* ============================================================
    CART SCREEN
    ============================================================ */
-.cart-screen {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
+.cart-screen { max-width: 700px; margin: 0 auto; }
 .cart-screen h1 {
   font-family: var(--font-display);
   font-size: clamp(36px, 5vw, 56px);
@@ -569,7 +551,6 @@ main {
   color: var(--slop-charcoal);
   margin-bottom: 24px;
 }
-
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -582,10 +563,7 @@ main {
   margin-bottom: 12px;
   gap: 12px;
 }
-.cart-item.discounted {
-  border-left: 5px solid var(--slop-pickle);
-}
-
+.cart-item.discounted { border-left: 5px solid var(--slop-pickle); }
 .cart-item .name {
   font-family: var(--font-display);
   font-size: 22px;
@@ -593,13 +571,8 @@ main {
   letter-spacing: -0.01em;
   color: var(--slop-charcoal);
 }
-
-.cart-item .meta {
-  font-size: 12px;
-  color: var(--slop-charcoal-soft);
-  margin-top: 4px;
-}
-
+.cart-item .meta { font-size: 12px; color: var(--slop-charcoal-soft); margin-top: 4px; }
+.cart-item .meta .discount-badge { font-size: 10px; padding: 2px 8px; }
 .cart-item .price {
   font-weight: 800;
   font-size: 20px;
@@ -607,7 +580,6 @@ main {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-
 .cart-item .remove {
   font-family: var(--font-body);
   font-weight: 700;
@@ -623,10 +595,7 @@ main {
   margin-left: 12px;
   transition: color var(--dur-fast), border-color var(--dur-fast);
 }
-.cart-item .remove:hover {
-  color: var(--slop-ketchup);
-  border-color: var(--slop-ketchup);
-}
+.cart-item .remove:hover { color: var(--slop-ketchup); border-color: var(--slop-ketchup); }
 
 .cart-summary {
   margin: 20px 0;
@@ -637,37 +606,19 @@ main {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sticker);
 }
-
-.cart-summary .row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 15px;
-  opacity: 0.85;
-}
-
+.cart-summary .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px; opacity: 0.85; }
 .cart-summary .row.total {
   font-family: var(--font-display);
   font-size: 28px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  font-weight: 400;
   color: var(--slop-mustard);
   opacity: 1;
   margin-top: 12px;
+  margin-bottom: 0;
   padding-top: 12px;
   border-top: 1.5px solid rgba(251,244,228,0.2);
-  margin-bottom: 0;
 }
+.cart-summary .savings { color: var(--slop-pickle); opacity: 1; }
 
-.cart-summary .savings {
-  color: var(--slop-pickle);
-  opacity: 1;
-}
-
-.empty {
-  text-align: center;
-  color: var(--slop-charcoal-soft);
-  padding: 48px;
-  font-size: 16px;
-}
+.empty { text-align: center; color: var(--slop-charcoal-soft); padding: 48px; font-size: 16px; }

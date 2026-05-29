@@ -35,21 +35,34 @@
         <h2 id="game-title"></h2>
         <div class="game-stats">
           <div class="stat"><span id="timer">30</span>s</div>
-          <div class="stat"><span id="lives">3</span> left</div>
+          <div class="stat stat-combo">Combo <span id="combo">0</span>x</div>
         </div>
+      </div>
+
+      <div class="stability-wrap">
+        <div class="stability-label">Stability</div>
+        <div class="stability-bar"><div class="stability-fill" id="stability-fill"></div></div>
       </div>
 
       <div class="game-body">
         <aside class="recipe-panel">
           <h3>Order ticket</h3>
-          <ol id="recipe-list"></ol>
-          <div class="next-up">
-            Next: <strong id="next-ingredient">—</strong>
+          <ul id="checklist"></ul>
+          <div class="tips">
+            <strong>Build smart</strong>
+            <ul>
+              <li>Bun first — seal it with lettuce or sauce</li>
+              <li>Cheese melts only on a hot patty</li>
+              <li>Heavy patties low, delicate veg high</li>
+              <li>Don't stack two slippery layers</li>
+              <li>Work fast — the clock counts</li>
+            </ul>
           </div>
         </aside>
 
         <div class="kitchen">
-          <div class="stack" id="stack"></div>
+          <div class="stack-wrap"><div class="stack" id="stack"></div></div>
+          <div class="feedback" id="feedback"></div>
           <div class="conveyor" id="conveyor"></div>
         </div>
       </div>
