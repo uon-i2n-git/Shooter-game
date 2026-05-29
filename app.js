@@ -48,7 +48,7 @@ function renderMenu() {
       <div class="price">$${item.price.toFixed(2)}</div>
       ${unlocked ? `<div class="discount-badge">${DISCOUNT_PERCENT}% OFF unlocked: ${unlocked}</div>` : ''}
       <div class="actions">
-        <button class="ghost-btn" data-play="${item.id}">🎮 Build it (${DISCOUNT_PERCENT}% off)</button>
+        <button class="ghost-btn" data-play="${item.id}">Build it (${DISCOUNT_PERCENT}% off)</button>
         <button class="primary-btn" data-add="${item.id}">Add to cart</button>
       </div>
     `;
@@ -207,7 +207,7 @@ function finishGame(won) {
   if (won) {
     const code = ensureDiscountCode(g.burger.id);
     overlay.innerHTML = `
-      <h2>🍔 Order up!</h2>
+      <h2>Order up!</h2>
       <p>You built a perfect <strong>${g.burger.name}</strong>.</p>
       <div class="code-box">${code}</div>
       <p>${DISCOUNT_PERCENT}% off applies automatically when you add this exact burger.</p>
@@ -223,7 +223,7 @@ function finishGame(won) {
     document.getElementById('overlay-back').addEventListener('click', () => render('menu'));
   } else {
     overlay.innerHTML = `
-      <h2>😬 Slopped it.</h2>
+      <h2>Slopped it.</h2>
       <p>The kitchen's a mess. No discount this time.</p>
       <div style="display:flex; gap:10px; margin-top:16px;">
         <button class="primary-btn" id="overlay-retry">Try again</button>
@@ -342,7 +342,7 @@ function renderCart() {
   `;
   checkout.style.display = 'block';
   checkout.onclick = () => {
-    alert(`Order placed! Total: $${total.toFixed(2)}\n\nThanks for slopping with us. 🍔`);
+    alert(`Order placed! Total: $${total.toFixed(2)}\n\nThanks for slopping with us.`);
     state.cart = [];
     state.unlockedDiscounts = {}; // discounts are single-use per session
     render('menu');

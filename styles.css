@@ -1,33 +1,59 @@
+/* Slop Burgers — kitchen mini-game styles
+   Design system: cream/mustard/ketchup/charcoal/pickle. */
+
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap");
+
+/* ---- Tokens ---- */
 :root {
-  --bg: #1a1410;
-  --bg-elev: #25201b;
-  --bg-card: #2f2822;
-  --accent: #ffb43a;
-  --accent-deep: #e08e1a;
-  --text: #f7efe2;
-  --muted: #b8a994;
-  --good: #6dd17a;
-  --bad: #e26060;
-  --radius: 12px;
+  --slop-mustard:       #E8B842;
+  --slop-ketchup:       #C8392E;
+  --slop-cream:         #FBF4E4;
+  --slop-charcoal:      #2B2118;
+  --slop-pickle:        #6B8E3D;
+
+  --slop-mustard-deep:  #C99A2C;
+  --slop-cream-deep:    #F1E6CC;
+  --slop-charcoal-soft: #4A3D30;
+  --fg-3:               #7A6A58;
+
+  --bg-elevated:        #FFFCF2;
+
+  --font-display: "Bagel Fat One", "Bowlby One", system-ui, sans-serif;
+  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --radius-md:   14px;
+  --radius-lg:   22px;
+  --radius-pill: 999px;
+
+  --shadow-sticker:    4px 4px 0 0 var(--slop-charcoal);
+  --shadow-sticker-lg: 6px 6px 0 0 var(--slop-charcoal);
+  --shadow-press:      2px 2px 0 0 var(--slop-charcoal);
+
+  --ease-bite: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:  140ms;
 }
 
-* { box-sizing: border-box; }
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: var(--font-body);
+  background: var(--slop-cream);
+  color: var(--slop-charcoal);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ============================================================
+   TOP BAR
+   ============================================================ */
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 24px;
-  background: var(--bg-elev);
-  border-bottom: 2px solid var(--accent-deep);
+  padding: 12px 28px;
+  background: var(--slop-cream);
+  border-bottom: 3px solid var(--slop-charcoal);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -37,108 +63,266 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 800;
-  font-size: 20px;
+  text-decoration: none;
 }
-.logo-mark { font-size: 28px; }
-.logo-text { color: var(--accent); letter-spacing: 0.5px; }
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--slop-charcoal);
+  line-height: 0.9;
+}
 
 nav { display: flex; gap: 8px; }
+
 .nav-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   background: transparent;
-  color: var(--text);
-  border: 1px solid #4a3f33;
-  padding: 8px 14px;
-  border-radius: var(--radius);
+  color: var(--slop-charcoal);
+  border: 3px solid var(--slop-charcoal);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  font-size: 14px;
+  transition: transform var(--dur-fast) var(--ease-bite), box-shadow var(--dur-fast);
 }
-.nav-btn:hover { border-color: var(--accent); }
-.nav-btn.active { background: var(--accent); color: #1a1410; border-color: var(--accent); font-weight: 700; }
+.nav-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-sticker);
+}
+.nav-btn.active {
+  background: var(--slop-ketchup);
+  color: var(--slop-cream);
+  border-color: var(--slop-charcoal);
+  box-shadow: var(--shadow-sticker);
+}
+.nav-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-press);
+}
+
 #cart-count {
   display: inline-block;
-  background: var(--bad);
-  color: white;
-  border-radius: 999px;
-  padding: 0 7px;
-  font-size: 12px;
+  background: var(--slop-ketchup);
+  color: var(--slop-cream);
+  border-radius: var(--radius-pill);
+  padding: 0 6px;
+  font-size: 11px;
   margin-left: 4px;
+  font-weight: 800;
 }
 
-main { padding: 24px; max-width: 1100px; margin: 0 auto; }
-.screen { animation: fadeIn 200ms ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+main {
+  padding: 32px 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-h1 { margin: 0 0 8px; font-size: 32px; }
-.subtitle { color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+.screen { animation: fadeIn 200ms ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   MENU SCREEN
+   ============================================================ */
+.menu-screen h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--slop-charcoal);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--slop-charcoal-soft);
+  margin-bottom: 28px;
+  max-width: 580px;
+}
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
 }
 
 .menu-card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  padding: 18px;
+  background: var(--bg-elevated);
+  border: 3px solid var(--slop-charcoal);
+  border-radius: var(--radius-md);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px solid #3a3128;
+  box-shadow: var(--shadow-sticker);
+  transition: transform var(--dur-fast) var(--ease-bite), box-shadow var(--dur-fast);
 }
-.menu-card h3 { margin: 0; }
-.menu-card .price { color: var(--accent); font-weight: 700; font-size: 18px; }
-.menu-card .ingredients { color: var(--muted); font-size: 13px; min-height: 40px; }
-.menu-card .actions { display: flex; gap: 8px; margin-top: auto; }
+.menu-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-sticker-lg);
+}
+.menu-card:nth-child(odd)  { transform: rotate(-0.5deg); }
+.menu-card:nth-child(even) { transform: rotate(0.4deg); }
+.menu-card:nth-child(odd):hover  { transform: rotate(-0.5deg) translate(-1px, -1px); }
+.menu-card:nth-child(even):hover { transform: rotate(0.4deg) translate(-1px, -1px); }
 
-.primary-btn, .ghost-btn {
-  border-radius: var(--radius);
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  border: none;
+.menu-card h3 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--slop-charcoal);
+  line-height: 1;
 }
-.primary-btn { background: var(--accent); color: #1a1410; }
-.primary-btn:hover { background: #ffc763; }
-.ghost-btn { background: transparent; color: var(--text); border: 1px solid #4a3f33; }
-.ghost-btn:hover { border-color: var(--accent); }
+
+.menu-card .ingredients {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--slop-charcoal-soft);
+  min-height: 36px;
+}
+
+.menu-card .price {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--slop-ketchup);
+  font-variant-numeric: tabular-nums;
+}
+
+.menu-card .actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
 
 .discount-badge {
   display: inline-block;
-  background: rgba(109, 209, 122, 0.15);
-  color: var(--good);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
+  font-family: var(--font-body);
   font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 2px solid var(--slop-charcoal);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--slop-pickle);
 }
 
-/* Game */
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.primary-btn, .ghost-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-bite), box-shadow var(--dur-fast);
+  border: 3px solid var(--slop-charcoal);
+}
+
+.primary-btn {
+  background: var(--slop-ketchup);
+  color: var(--slop-cream);
+  box-shadow: var(--shadow-sticker);
+}
+.primary-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-sticker-lg);
+}
+.primary-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-press);
+}
+
+.ghost-btn {
+  background: var(--slop-mustard);
+  color: var(--slop-charcoal);
+  box-shadow: var(--shadow-sticker);
+}
+.ghost-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-sticker-lg);
+}
+.ghost-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-press);
+}
+
+/* ============================================================
+   GAME SCREEN
+   ============================================================ */
 .game-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   gap: 12px;
   flex-wrap: wrap;
 }
+
 .back-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   background: transparent;
-  color: var(--muted);
+  color: var(--slop-charcoal-soft);
   border: none;
   cursor: pointer;
-  font-size: 14px;
   padding: 6px 0;
+  transition: color var(--dur-fast);
 }
-.back-btn:hover { color: var(--accent); }
-.game-stats { display: flex; gap: 12px; }
+.back-btn:hover { color: var(--slop-ketchup); }
+
+.game-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--slop-charcoal);
+}
+
+.game-stats { display: flex; gap: 10px; }
+
 .stat {
-  background: var(--bg-card);
-  padding: 8px 14px;
-  border-radius: var(--radius);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  background: var(--slop-mustard);
+  color: var(--slop-charcoal);
+  border: 3px solid var(--slop-charcoal);
+  border-radius: var(--radius-pill);
+  padding: 6px 18px 5px;
+  box-shadow: 3px 3px 0 0 var(--slop-charcoal);
+  line-height: 1;
 }
 
 .game-body {
@@ -151,49 +335,83 @@ h1 { margin: 0 0 8px; font-size: 32px; }
   .game-body { grid-template-columns: 1fr; }
 }
 
+/* ---- Recipe panel ---- */
 .recipe-panel {
-  background: var(--bg-card);
-  padding: 16px;
-  border-radius: var(--radius);
-  border: 1px solid #3a3128;
+  background: var(--bg-elevated);
+  border: 3px solid var(--slop-charcoal);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sticker);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
 }
-.recipe-panel h3 { margin: 0 0 10px; }
+
+.recipe-panel h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--slop-charcoal);
+  margin-bottom: 12px;
+}
+
 #recipe-list {
   list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 16px;
+  flex: 1;
 }
+
 #recipe-list li {
-  padding: 8px 10px;
-  border-radius: 6px;
-  background: var(--bg-elev);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--slop-cream);
+  border: 1.5px solid var(--slop-cream-deep);
   font-size: 14px;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-#recipe-list li.done { color: var(--good); text-decoration: line-through; opacity: 0.6; }
-#recipe-list li.current {
-  background: rgba(255, 180, 58, 0.15);
-  border-left: 3px solid var(--accent);
-}
-.next-up {
-  font-size: 13px;
-  color: var(--muted);
-  padding-top: 10px;
-  border-top: 1px solid #3a3128;
+  color: var(--slop-charcoal);
 }
 
+#recipe-list li.done {
+  color: var(--fg-3);
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+#recipe-list li.current {
+  background: var(--slop-mustard);
+  border-color: var(--slop-charcoal);
+  border-width: 2px;
+  font-weight: 700;
+  color: var(--slop-charcoal);
+}
+
+.next-up {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  padding-top: 12px;
+  border-top: 1.5px solid var(--slop-cream-deep);
+}
+.next-up strong {
+  color: var(--slop-ketchup);
+}
+
+/* ---- Kitchen ---- */
 .kitchen {
   display: flex;
   flex-direction: column;
-  background: var(--bg-elev);
-  border-radius: var(--radius);
+  background: var(--slop-charcoal);
+  border: 3px solid var(--slop-charcoal);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid #3a3128;
   position: relative;
 }
 
@@ -211,10 +429,10 @@ h1 { margin: 0 0 8px; font-size: 32px; }
   content: "";
   position: absolute;
   bottom: 0;
-  left: 10%;
-  right: 10%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #4a3f33, transparent);
+  left: 8%;
+  right: 8%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--slop-charcoal-soft), transparent);
 }
 
 .layer {
@@ -222,119 +440,234 @@ h1 { margin: 0 0 8px; font-size: 32px; }
   max-width: 320px;
   padding: 10px 16px;
   margin-bottom: -6px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   text-align: center;
+  font-family: var(--font-body);
   font-weight: 700;
-  font-size: 14px;
-  color: #1a1410;
-  box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-  animation: drop 220ms ease;
+  font-size: 13px;
+  color: var(--slop-charcoal);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.25);
+  animation: drop 220ms var(--ease-bite);
 }
 @keyframes drop {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: none; opacity: 1; }
+  from { transform: translateY(-32px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
 }
 
+/* ---- Conveyor ---- */
 .conveyor {
   display: flex;
   gap: 10px;
   padding: 14px;
   background: #1a1410;
-  border-top: 2px dashed #3a3128;
+  border-top: 3px dashed var(--slop-mustard);
   flex-wrap: wrap;
   justify-content: center;
-  min-height: 70px;
+  min-height: 72px;
 }
 
 .ingredient-btn {
-  background: var(--bg-card);
-  color: var(--text);
-  border: 2px solid #3a3128;
-  padding: 10px 14px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 14px;
+  font-family: var(--font-body);
   font-weight: 600;
-  transition: transform 100ms ease, border-color 100ms ease;
+  font-size: 13px;
+  background: var(--slop-cream);
+  color: var(--slop-charcoal);
+  border: 2px solid var(--slop-cream-deep);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-bite), border-color var(--dur-fast), background var(--dur-fast);
 }
-.ingredient-btn:hover { border-color: var(--accent); transform: translateY(-2px); }
-.ingredient-btn.flash-good { border-color: var(--good); background: rgba(109,209,122,0.2); }
-.ingredient-btn.flash-bad { border-color: var(--bad); background: rgba(226,96,96,0.2); animation: shake 200ms; }
+.ingredient-btn:hover {
+  border-color: var(--slop-mustard);
+  background: var(--slop-mustard);
+  transform: translateY(-2px);
+}
+.ingredient-btn.flash-good {
+  background: var(--slop-pickle);
+  color: var(--slop-cream);
+  border-color: var(--slop-pickle);
+}
+.ingredient-btn.flash-bad {
+  background: var(--slop-ketchup);
+  color: var(--slop-cream);
+  border-color: var(--slop-ketchup);
+  animation: shake 200ms;
+}
 @keyframes shake {
   0%,100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  25%      { transform: translateX(-5px); }
+  75%      { transform: translateX(5px); }
 }
 
+/* ---- Game overlay ---- */
 .game-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 6, 3, 0.92);
+  background: rgba(43, 33, 24, 0.93);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 24px;
+  padding: 32px;
   z-index: 5;
 }
 .game-overlay.hidden { display: none; }
-.game-overlay h2 { margin: 0 0 12px; font-size: 28px; }
-.game-overlay .code-box {
-  background: var(--bg-card);
-  border: 2px dashed var(--accent);
-  padding: 14px 24px;
-  font-family: monospace;
-  font-size: 22px;
-  letter-spacing: 2px;
-  color: var(--accent);
-  margin: 16px 0;
-  border-radius: var(--radius);
+
+.game-overlay h2 {
+  font-family: var(--font-display);
+  font-size: 52px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--slop-cream);
+  margin-bottom: 12px;
 }
 
-/* Cart */
-.cart-screen { max-width: 700px; margin: 0 auto; }
+.game-overlay p {
+  font-size: 16px;
+  color: var(--slop-cream);
+  opacity: 0.85;
+  max-width: 400px;
+}
+
+.game-overlay .code-box {
+  background: transparent;
+  border: 3px solid var(--slop-mustard);
+  border-radius: var(--radius-md);
+  box-shadow: 6px 6px 0 0 var(--slop-mustard);
+  padding: 14px 28px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  color: var(--slop-mustard);
+  margin: 18px 0;
+  text-transform: uppercase;
+}
+
+.game-overlay .overlay-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* ============================================================
+   CART SCREEN
+   ============================================================ */
+.cart-screen {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cart-screen h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: var(--slop-charcoal);
+  margin-bottom: 24px;
+}
+
 .cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  margin-bottom: 10px;
+  padding: 16px 20px;
+  background: var(--bg-elevated);
+  border: 3px solid var(--slop-charcoal);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sticker);
+  margin-bottom: 12px;
+  gap: 12px;
 }
-.cart-item .name { font-weight: 700; }
-.cart-item .meta { color: var(--muted); font-size: 13px; }
-.cart-item .price { font-weight: 700; color: var(--accent); }
+.cart-item.discounted {
+  border-left: 5px solid var(--slop-pickle);
+}
+
+.cart-item .name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--slop-charcoal);
+}
+
+.cart-item .meta {
+  font-size: 12px;
+  color: var(--slop-charcoal-soft);
+  margin-top: 4px;
+}
+
+.cart-item .price {
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--slop-ketchup);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
 .cart-item .remove {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   background: transparent;
-  border: 1px solid #4a3f33;
-  color: var(--muted);
-  padding: 4px 8px;
-  border-radius: 6px;
+  border: 2px solid var(--slop-cream-deep);
+  color: var(--fg-3);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   margin-left: 12px;
-  font-size: 12px;
+  transition: color var(--dur-fast), border-color var(--dur-fast);
 }
-.cart-item .remove:hover { color: var(--bad); border-color: var(--bad); }
-.cart-item.discounted { border-left: 3px solid var(--good); }
+.cart-item .remove:hover {
+  color: var(--slop-ketchup);
+  border-color: var(--slop-ketchup);
+}
 
 .cart-summary {
-  margin: 18px 0;
-  padding: 16px;
-  background: var(--bg-elev);
-  border-radius: var(--radius);
+  margin: 20px 0;
+  padding: 20px 24px;
+  background: var(--slop-charcoal);
+  color: var(--slop-cream);
+  border: 3px solid var(--slop-charcoal);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sticker);
 }
+
 .cart-summary .row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  opacity: 0.85;
 }
-.cart-summary .row.total { font-size: 20px; font-weight: 800; color: var(--accent); margin-top: 8px; padding-top: 8px; border-top: 1px solid #3a3128; }
-.cart-summary .savings { color: var(--good); }
+
+.cart-summary .row.total {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--slop-mustard);
+  opacity: 1;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1.5px solid rgba(251,244,228,0.2);
+  margin-bottom: 0;
+}
+
+.cart-summary .savings {
+  color: var(--slop-pickle);
+  opacity: 1;
+}
 
 .empty {
   text-align: center;
-  color: var(--muted);
-  padding: 40px;
+  color: var(--slop-charcoal-soft);
+  padding: 48px;
+  font-size: 16px;
 }
